@@ -3,11 +3,13 @@ const fetch = require('node-fetch');
 const getItems = async (q, limit = null, offset = null) => {
   try {
     if (!q) throw new Error('No query provided');
-    return (
-      await fetch(
+    const response = await fetch(
         `${process.env.API_URL}sites/MLA/search?q=${q}${limit ? '&limit=' + limit : ''}${offset ? '&offset=' + offset : ''}`
-      )
-    ).json();
+      );
+    const responseJson = await response.json();
+
+    if(!response.ok) throw responseJson;
+    return responseJson;
   } catch (error) {
     throw error;
   }
@@ -16,7 +18,11 @@ const getItems = async (q, limit = null, offset = null) => {
 const getItem = async (id) => {
   try {
     if (!id) throw new Error('No item id provided');
-    return (await fetch(`${process.env.API_URL}/items/${id}`)).json();
+    const response = await fetch(`${process.env.API_URL}/items/${id}`);
+    const responseJson = await response.json();
+
+    if(!response.ok) throw responseJson;
+    return responseJson;
   } catch (error) {
     throw error;
   }
@@ -25,9 +31,11 @@ const getItem = async (id) => {
 const getItemDescription = async (id) => {
   try {
     if (!id) throw new Error('No item id provided');
-    return (
-      await fetch(`${process.env.API_URL}/items/${id}/description`)
-    ).json();
+    const response = await fetch(`${process.env.API_URL}/items/${id}/description`);
+    const responseJson = await response.json();
+
+    if(!response.ok) return null;
+    return responseJson;
   } catch (error) {
     throw error;
   }

@@ -32,7 +32,7 @@ const formatItem = (item, itemDescription) => {
     condition: item.condition,
     free_shipping: item.shipping.free_shipping,
     sold_quantity: item.sold_quantity,
-    description: itemDescription.plain_text,
+    description: !itemDescription ? "" : itemDescription.plain_text,
   };
 }
 
