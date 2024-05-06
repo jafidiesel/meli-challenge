@@ -1,38 +1,30 @@
 const { formatItems, formatCategories, formatItem} = require("../helpers/formatters");
 const { getItems, getItem, getItemDescription } = require("../repository/items.repository");
 
-const getAllItems = async (req, res) => {
-  try {
-    const response = await getItems(req.query.q, req.query.limit, req.query.offset);
-    res.status(200).send({
+const getAllItems = async (query, limit= null, offset= null) => {
+    const response = await getItems(query, limit, offset);
+    const getAllItemsDTO = {
       author: {
         name: "",
         lastname: "",
       },
       categories: formatCategories(response.filters),
       items: formatItems(response.results),
-    });
-  } catch (error) {
-    // this will be improved once the route validators are implemented
-    res.status(error.status ? error.status : 400).send({ message: error.message});
-  }
+    };
+    return getAllItemsDTO;
 };
 
-const getItemById = async (req, res) => {
-  try {
-    const itemResponse = await getItem(req.params.id);
-    const itemDescriptionResponse = await getItemDescription(req.params.id);
-    res.status(200).send({
+const getItemById = async (id) => {
+    const itemResponse = await getItem(id);
+    const itemDescriptionResponse = await getItemDescription(id);
+    const getItemByIdDTO = {
       author: {
         name: "",
         lastname: "",
       },
       item: formatItem(itemResponse, itemDescriptionResponse),
-    });
-  } catch (error) {
-    // this will be improved once the route validators are implemented
-    res.status(error.status ? error.status : 400).send({ message: error.message });
-  }
+    };
+    return getItemByIdDTO;
 };
 
 module.exports = {
