@@ -18,7 +18,6 @@ const SearchBar: React.FC = () => {
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    console.log("submit");
     router.push('/items?search=' + searchTerm)
 }
     
