@@ -1,0 +1,12 @@
+@import  '../../variables.scss';
+
+.productListContainer{
+    background-color: $color7;
+    border-radius: 4px;
+    height: 100%;
+    padding: 16px;
+    margin-bottom: 32px;
+    > div:not(:last-child){
+        border-bottom: 1px solid $color5;
+    }
+}
