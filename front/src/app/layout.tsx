@@ -1,7 +1,7 @@
+import Bar from "@/components/Bar/Bar";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import styles from "./Layout.module.scss";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Meli Challenge",
@@ -15,12 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>
-        <p>-----search bar--------</p>
-        <div>
+      <body className={styles.body}>
+        <Bar />
+        <div className={styles.content}>
           {children}
         </div>
-        <hr></hr>
       </body>
     </html>
   );

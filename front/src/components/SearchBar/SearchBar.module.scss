@@ -1,0 +1,31 @@
+@import  '../../variables.scss';
+
+.searchBarContainer{
+    width: 100%;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchBar{
+    height: 20px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 15px 10px 15px;
+    color: $color2;
+    border: none;
+}
+.searchBar::placeholder{
+    color: $color4;
+}
+.iconContainer{
+    background-color: $color5;
+    height: 20px;
+    padding: 10px;
+}
+.icon {
+    padding: 4px 4px;
+    width: 16px;
+    height: 16px;
+}

@@ -1,0 +1,13 @@
+@import  '../variables.scss';
+.body{
+    margin: 0px;
+    min-height: 100vh;
+    background-color: $color5;
+    min-width: 320px;
+    font-family: Helvetica, Verdana, Geneva, Tahoma;
+}
+.content{
+    height: 100%;
+    width: calc(100% - 100%/12 * 2);
+    margin: auto;
+}
