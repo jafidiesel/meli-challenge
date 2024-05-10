@@ -35,7 +35,7 @@ export default async function Item({ params }: ItemProps) {
               type={ImageType.LARGE}
             />
               <p className={styles.title}>Descripción del producto</p>
-              <p className={styles.description}>{data.item.description}</p>
+              <p className={styles.description}>{data.item.description ? data.item.description : "No hay descripción para el producto"}</p>
         </div>
         <div className={styles.priceBlock}>
           <div className={styles.condition}>{translateCondition(data.item.condition)}</div>
