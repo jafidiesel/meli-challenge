@@ -20,7 +20,6 @@ export interface IProduct {
 }
 
 export default function ProductRow(props: IProduct) {
-  // get product from API
   return (
     <div className={styles.productContainer}>
       <div className={styles.imageContainer}>
