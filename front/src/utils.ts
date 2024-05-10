@@ -1,3 +1,18 @@
+function decimalToSuperscript(decimalPrice: string): string {
+  const superscripts = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'];
+  let superscriptPrice = '';
+
+  for (let i = 0; i < decimalPrice.length; i++) {
+    if (decimalPrice[i] === '.') {
+      continue;
+    }
+    const digit = parseInt(decimalPrice[i]);
+    superscriptPrice += superscripts[digit];
+  }
+
+  return superscriptPrice;
+}
+
 const formatPrice = (price: string) => {
     const trimmedPrice = price
         .split('.');
@@ -13,7 +28,7 @@ const formatPrice = (price: string) => {
         .reverse()
         .join('');
     
-    return intPrice.concat(`.${decimalPrice}`);
+    return intPrice.concat(`.${decimalToSuperscript(decimalPrice)}`);
 };
 
 const translateCondition = (condition: string) => {

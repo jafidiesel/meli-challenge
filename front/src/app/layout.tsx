@@ -2,7 +2,6 @@ import Bar from "@/components/Bar/Bar";
 import type { Metadata } from "next";
 import styles from "./Layout.module.scss";
 
-
 export const metadata: Metadata = {
   title: "Meli Challenge",
   description: "Developed by Jafi Bravin",

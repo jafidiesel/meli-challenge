@@ -1,16 +1,16 @@
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./Bar.module.scss";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Bar() {
   return (
     <div className={styles.outterContainer}>
       <div className={styles.innerContainer}>
         <div className={styles.searchBar}>
-          <img
-            src="https://http2.mlstatic.com/storage/developers-site-cms-admin/268205826549-Mercado-Libre--3-.png"
-            alt="Meli"
-            className={styles.logo}
-          />
+          <Link href="/" className={styles.logo}>
+            <Image src="/logo.png" alt="Meli" className={styles.logo} width="40" height="30"  />
+          </Link>
           <SearchBar />
         </div>
       </div>
