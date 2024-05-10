@@ -1,16 +1,10 @@
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import styles from "./Id.module.scss";
 import ImageProduct, {
   ImageType,
 } from "@/components/ImageProduct/ImageProduct";
 import { formatPrice, translateCondition } from "@/utils";
-
-async function getItem(id: string) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/items/${id}`
-  );
-  return response.json();
-}
+import { getItem } from "@/services/api.service";
+import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 
 interface ItemProps {
   params: {
@@ -19,12 +13,22 @@ interface ItemProps {
 }
 
 export default async function Item({ params }: ItemProps) {
-  const data = await getItem(params.id);
+  let data = null;
+  const errorElement = <ErrorMessage message="Ocurrió un error recuperando el producto" />;
+  
+  try {
+    data = await getItem(params.id);
+    if(data.error) return errorElement;
+    
+  } catch (err) {
+    console.error(err);
+    return errorElement;
+  }
+  
+  if (!data || !data.item) return <div>Cargando...</div>;
 
   return (
-    <div>
-      <Breadcrumb categories={[]} />
-      <div className={styles.itemInnerContainer}>
+     <div className={styles.itemInnerContainer}>
         <div className={styles.descriptionBlock}>
             <ImageProduct
               image={data.item.picture}
@@ -34,12 +38,11 @@ export default async function Item({ params }: ItemProps) {
               <p className={styles.description}>{data.item.description}</p>
         </div>
         <div className={styles.priceBlock}>
-          <div className={styles.condition}>{translateCondition(data.item.condition)} - amount selled</div>
+          <div className={styles.condition}>{translateCondition(data.item.condition)}</div>
           <div className={styles.title}>{data.item.title}</div>
           <div className={styles.price}>$ {formatPrice(data.item.price.amount.toString())}</div>
           <button className={styles.buy}>Comprar</button>
         </div>
       </div>
-    </div>
   );
 }
