@@ -3,4 +3,10 @@
 .text{
     font-size: 14px;
     color: $color4;
+    > :last-child{
+        font-weight: 700;
+    }
+}
+.hide{
+    display: none;
 }

@@ -13,12 +13,12 @@ const SearchBar: React.FC = () => {
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
-        // Perform search logic here
     };
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    router.push('/items?search=' + searchTerm)
+    if(searchTerm === "") return router.push('/');
+    router.push('/items?search=' + searchTerm);
 }
     
 

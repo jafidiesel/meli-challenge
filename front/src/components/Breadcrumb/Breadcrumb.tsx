@@ -1,8 +1,15 @@
 import styles from "./Breadcrumb.module.scss"
-export default function Breadcrumb() {
+
+interface BreadcrumbProps {
+    categories: string[];
+  }
+
+export default function Breadcrumb(props: BreadcrumbProps) {
+    if(!props.categories || props.categories.length === 0) return null;
     return (
-        <div className={styles.text}>
-            <p>Categoria 1 {">"} Categoria 2 {">"} Categoria 3</p>
-        </div>
+        <p className={styles.text}>
+            {props.categories.map((category, index) => ( <span key={index}>{category} <span className={index === props.categories.length-1 ? styles.hide : ''}>&#62; </span></span>
+          ))}
+        </p>
     );
   }
