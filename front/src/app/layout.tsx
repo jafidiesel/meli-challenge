@@ -1,6 +1,6 @@
-import Bar from "@/components/Bar/Bar";
 import type { Metadata } from "next";
 import styles from "./Layout.module.scss";
+import SearchBar from "@/components/SearchBar/SearchBar";
 
 export const metadata: Metadata = {
   title: "Meli Challenge",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={styles.body}>
-        <Bar />
+        <SearchBar />
         <div className={styles.content}>
           {children}
         </div>
