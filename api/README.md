@@ -2,6 +2,12 @@
 Run `npm run prepare-env`
 Set PORT and API_URL values on .env.dev and .env.prod
 
+# How to test
+Run `npm run test`
+
+# How to run
+Make sure to use node v12 & npm v6
+Run `npm run start`
 
 ## Endpoints
 
@@ -33,10 +39,12 @@ HTTP 200
 }
 ```
 
-#### [GET] {BASE_URL}/items?q=:query
+#### [GET] {BASE_URL}/items?q=:query&limit=:number&offset=:number
 - query param:
 ```
     query: string
+    limit: number (optional)
+    offset: number (optional)
 ```
 - response:
 ```
