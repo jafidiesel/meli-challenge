@@ -1,13 +1,32 @@
 @import  '../../variables.scss';
 
-.searchBarContainer{
+.outterContainer{
+    background-color: $color1;
+}
+.innerContainer{
+    margin: 0 46px;
+    width: calc(100% - 100%/12 * 2);
+    margin: auto;
+}
+.logo{
+    width: 40px;
+    height: 30px;
+    margin: auto;
+    cursor: pointer;
+}
+.searchBar{
+    display: flex;
+    gap: 18px;
+}
+
+.searchBarInputContainer{
     width: 100%;
     padding: 8px 12px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.searchBar{
+.searchBarInput{
     height: 20px;
     width: 100%;
     font-size: 18px;
@@ -16,7 +35,7 @@
     color: $color2;
     border: none;
 }
-.searchBar::placeholder{
+.searchBarInput::placeholder{
     color: $color4;
 }
 .iconContainer{
