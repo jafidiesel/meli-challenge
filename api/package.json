@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "env-cmd -f ./envs/.env.dev node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "cd .. & husky install ./api",
+    "test": "env-cmd -f ./envs/.env.dev mocha tests/**/*.test.js",
     "format": "prettier --write .",
     "build": "env-cmd -f ./envs/env.prod tsc",
     "build:dev": "env-cmd -f ./envs/env.dev tsc -w",
@@ -29,19 +28,8 @@
   },
   "devDependencies": {
     "eslint": "^9.1.1",
-    "husky": "^9.0.11",
-    "prettier": "^3.2.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    },
-    "lint-staged": {
-      "*.js": [
-        "eslint — fix",
-        "prettier — write",
-        "git add"
-      ]
-    }
+    "prettier": "^3.2.5",
+    "mocha": "^9.2.2",
+    "nock": "^13.5.4"
   }
 }
