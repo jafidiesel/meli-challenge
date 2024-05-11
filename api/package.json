@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "env-cmd -f ./envs/.env.dev node index.js",
+    "test": "env-cmd -f ./envs/.env.dev mocha tests/**/*.test.js",
     "format": "prettier --write .",
     "build": "env-cmd -f ./envs/env.prod tsc",
     "build:dev": "env-cmd -f ./envs/env.dev tsc -w",
@@ -29,7 +30,9 @@
   },
   "devDependencies": {
     "eslint": "8.43.0",
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "mocha": "^9.2.2",
+    "nock": "^13.5.4"
   },
   "engines": {
     "node": ">=12.0.0 <13.0.0"

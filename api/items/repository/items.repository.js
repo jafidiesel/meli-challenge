@@ -4,7 +4,7 @@ const getItems = async (q, limit = null, offset = null) => {
   try {
     if (!q) throw new Error('No query provided');
     const response = await fetch(
-        `${process.env.API_URL}sites/MLA/search?q=${q}${limit ? '&limit=' + limit : ''}${offset ? '&offset=' + offset : ''}`
+        `${process.env.API_URL}/sites/MLA/search?q=${q}${limit ? '&limit=' + limit : ''}${offset ? '&offset=' + offset : ''}`
       );
     const responseJson = await response.json();
 
