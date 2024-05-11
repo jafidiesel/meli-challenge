@@ -28,7 +28,6 @@ HTTP 200
         "thumbnail": string,
         "condition": string,
         "free_shipping": boolean,
-        "sold_quantity", Number
         "description": string,
     }
 }
